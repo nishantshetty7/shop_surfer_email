@@ -1,0 +1,25 @@
+version: "3.8"
+services:
+  shopsurfer_email:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file: .env
+    volumes:
+      - ./app:/app
+    ports:
+      - 8001:8001
+    image: shopsurfer_email:latest
+    container_name: shopsurfer_email
+    command: "python app.py"
+
+  # celery:
+  #   restart: always
+  #   build:
+  #     context: .
+  #   command: celery -A app.celery worker -l INFO
+  #   volumes:
+  #     - .:/app
+  #   container_name: celery
+  #   depends_on:
+  #     - shopsurfer_email
