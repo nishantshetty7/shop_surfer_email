@@ -12,6 +12,7 @@ services:
     image: shopsurfer_email:latest
     container_name: shopsurfer_email
     command: "python app.py"
+    restart: always
 
   # celery:
   #   restart: always
